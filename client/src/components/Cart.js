@@ -55,21 +55,7 @@ function Cart({ onClose }) {
     setCartChange(!cartChange);
   }
 
-  // useEffect(() => {
-  //   let updateCartPrice = async () => {
-  //     const req = {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({ cartId, totalCartPrice }),
-  //   };
-  //   await fetch('/api/cart-items', req);
-  //   setCartChange(!cartChange);
-  //   }
-  // })
-
-  const subtotal = items.length > 0 ? items[0].totalCartPrice.toFixed(2) : 0;
+  //const subtotal = items.length > 0 ? items[0].totalCartPrice.toFixed(2) : 0;
 
   let totalCartPrice2 = 0;
   items.map((item) => (totalCartPrice2 += item.totalPrice));

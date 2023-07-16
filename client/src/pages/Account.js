@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import AppContext from '../components/AppContext.js';
 import '../styles.css';
 import Footer from '../components/Footer';
 
 export default function Account() {
   const { user, handleSignOut } = useContext(AppContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <div>

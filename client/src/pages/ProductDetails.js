@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { fetchProduct } from '../lib/api';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import '../styles.css';
 import Footer from '../components/Footer';
 import AppContext from '../components/AppContext';

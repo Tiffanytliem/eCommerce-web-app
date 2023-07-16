@@ -1,9 +1,7 @@
-import logo from './logo.svg';
 import { useEffect, useState } from 'react';
 import './App.css';
-import { Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header.js';
-import Footer from './components/Footer.js';
 import Catalog from './pages/Catalog.js';
 import ProductDetails from './pages/ProductDetails.js';
 import AppContext from './components/AppContext.js';
