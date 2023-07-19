@@ -5,6 +5,7 @@ import errorMiddleware from './lib/error-middleware.js';
 import pg from 'pg';
 import jwt from 'jsonwebtoken';
 import ClientError from './lib/client-error.js';
+import stripe from 'stripe';
 
 // eslint-disable-next-line no-unused-vars -- Remove when used
 const db = new pg.Pool({
@@ -24,6 +25,7 @@ app.use(express.static(reactStaticDir));
 // Static directory for file uploads server/public/
 app.use(express.static(uploadsStaticDir));
 app.use(express.json());
+app.use('/api/stripe', stripe);
 
 app.get('/api/products', async (req, res, next) => {
   try {

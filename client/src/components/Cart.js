@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import AppContext from './AppContext.js';
 import '../styles.css';
+import PayButton from './PayButton.js';
 
 function Cart({ onClose }) {
   const [items, setItems] = useState([]);
@@ -111,7 +112,9 @@ function Cart({ onClose }) {
       <hr />
       <p className="subtotal">Subtotal: ${totalCartPrice2.toFixed(2)}</p>
 
-      <button className="check-out">Check out</button>
+      <PayButton cartItems={items} className="check-out">
+        Check out
+      </PayButton>
       <br />
     </div>
   );
