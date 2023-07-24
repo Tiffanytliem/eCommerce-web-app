@@ -106,6 +106,7 @@ function Cart({ onClose }) {
           <div className="cart-column-fourth">
             <p>${item.totalPrice.toFixed(2)}</p>
           </div>
+          ` `
         </div>
       ))}
       <br />

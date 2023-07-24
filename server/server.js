@@ -156,6 +156,14 @@ app.post('/api/:userId/:cartId', async (req, res, next) => {
   }
 });
 
+// app.post('/api/stripe/create-checkout-session', async (req, res, next) => {
+//   const { userId, cartItems } = req.body;
+//   try {
+//     const sql = `
+//       INSERT INTO "`
+//   }
+// }
+
 app.post('/api/cart-items', async (req, res, next) => {
   const { productId, images, name, price } = req.body.product;
   const { userId } = req.body.user;
