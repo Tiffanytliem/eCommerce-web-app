@@ -388,7 +388,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
       cancel_url: `${process.env.CLIENT_URL}/cart`,
     });
 
-    res.redirect(303, session.url);
+    res.json({ url: session.url });
     // console.log(session);
   } catch (err) {
     console.log(err);

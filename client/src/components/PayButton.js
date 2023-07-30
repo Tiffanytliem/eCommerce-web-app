@@ -21,18 +21,28 @@ const PayButton = ({ cartItems }) => {
   //   console.log('handleCheckout');
   // };
 
+  // async function handleCheckout() {
+  //   const req = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ cartItems, user }),
+  //   };
+  //   await fetch('/api/create-checkout-session', req);
+  //   console.log(cartItems);
+  // }
+
   async function handleCheckout() {
-    const req = {
+    const res = await fetch(`/api/create-checkout-session`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ cartItems, user }),
-    };
-    await fetch('/api/create-checkout-session', req);
-    console.log(cartItems);
+    });
+    const body = await res.json();
+    window.location.href = body.url;
   }
-
   return (
     <>
       <button onClick={() => handleCheckout()}>Check Out</button>
