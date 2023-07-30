@@ -5,7 +5,7 @@ import errorMiddleware from './lib/error-middleware.js';
 import pg from 'pg';
 import jwt from 'jsonwebtoken';
 import ClientError from './lib/client-error.js';
-import stripe from 'stripe';
+import Stripe from 'stripe';
 
 // eslint-disable-next-line no-unused-vars -- Remove when used
 const db = new pg.Pool({
@@ -25,7 +25,7 @@ app.use(express.static(reactStaticDir));
 // Static directory for file uploads server/public/
 app.use(express.static(uploadsStaticDir));
 app.use(express.json());
-app.use('/api/stripe', stripe);
+app.use('/api/stripe', Stripe);
 
 app.get('/api/products', async (req, res, next) => {
   try {
@@ -156,12 +156,9 @@ app.post('/api/:userId/:cartId', async (req, res, next) => {
   }
 });
 
-// app.post('/api/stripe/create-checkout-session', async (req, res, next) => {
+// app.post('/api/stripe/create-checkout-session/:userId', async (req, res, next) => {
 //   const { userId, cartItems } = req.body;
-//   try {
-//     const sql = `
-//       INSERT INTO "`
-//   }
+
 // }
 
 app.post('/api/cart-items', async (req, res, next) => {
@@ -360,6 +357,44 @@ async function getOrCreateCart(userId) {
  * Catching everything that doesn't match a route and serving index.html allows
  * React Router to manage the routing.
  */
+
+// require('dotenv').config();
+
+const stripe = Stripe(process.env.STRIPE_KEY);
+
+// const router = express.Router();
+
+app.post('/api/create-checkout-session', async (req, res) => {
+  try {
+    // const {
+    //   product,
+    //   price
+    // } = req.body;
+    const session = await stripe.checkout.sessions.create({
+      line_items: [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: 'T-shirt',
+            },
+            unit_amount: 2000,
+          },
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: `${process.env.CLIENT_URL}/checkout-success`,
+      cancel_url: `${process.env.CLIENT_URL}/cart`,
+    });
+
+    res.redirect(303, session.url);
+    // console.log(session);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
 
 app.use(errorMiddleware);
