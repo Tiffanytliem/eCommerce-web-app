@@ -37,6 +37,8 @@
     "stylelint-config-standard": "^32.0.0"
   },
   "dependencies": {
-    "jsonwebtoken": "^9.0.0"
+    "axios": "^1.4.0",
+    "jsonwebtoken": "^9.0.0",
+    "react-redux": "^8.1.1"
   }
 }
