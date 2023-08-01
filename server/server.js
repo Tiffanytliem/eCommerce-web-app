@@ -5,6 +5,7 @@ import errorMiddleware from './lib/error-middleware.js';
 import pg from 'pg';
 import jwt from 'jsonwebtoken';
 import ClientError from './lib/client-error.js';
+import Stripe from 'stripe';
 
 // eslint-disable-next-line no-unused-vars -- Remove when used
 const db = new pg.Pool({
@@ -24,6 +25,7 @@ app.use(express.static(reactStaticDir));
 // Static directory for file uploads server/public/
 app.use(express.static(uploadsStaticDir));
 app.use(express.json());
+app.use('/api/stripe', Stripe);
 
 app.get('/api/products', async (req, res, next) => {
   try {
@@ -350,6 +352,45 @@ async function getOrCreateCart(userId) {
  * Catching everything that doesn't match a route and serving index.html allows
  * React Router to manage the routing.
  */
+
+// require('dotenv').config();
+
+const stripe = Stripe(process.env.STRIPE_KEY);
+
+// const router = express.Router();
+
+app.post('/api/create-checkout-session', async (req, res) => {
+  try {
+    // req.body.cartItems.map((item) => {
+    //   console.log(item.itemId);
+    //   return item.itemId;
+    // });
+    const lineItems = req.body.cartItems.map((item) => {
+      return {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: item.name,
+          },
+          unit_amount: item.price * 100,
+        },
+        quantity: item.quantity,
+      };
+    });
+
+    const session = await stripe.checkout.sessions.create({
+      line_items: lineItems,
+      mode: 'payment',
+      success_url: `${process.env.CLIENT_URL}/checkout-success`,
+      cancel_url: `${process.env.CLIENT_URL}/cart`,
+    });
+
+    res.json({ url: session.url });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
 
 app.use(errorMiddleware);

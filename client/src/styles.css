@@ -145,7 +145,7 @@ a:link {
 }
 
 .add-to-cart,
-.check-out {
+.payButton {
   font-family: inherit;
   font-size: 20px;
   width: 100%;
@@ -176,7 +176,8 @@ a:link {
 
 .emailInput,
 .passwordInput,
-.auth-form-submit-button {
+.auth-form-submit-button,
+.check-out {
   width: 100%;
   border: solid #ced4da 0.5px;
   color: inherit;
@@ -207,6 +208,7 @@ a:link {
 }
 
 button:hover,
+.check-out:hover,
 .actionLink:hover,
 .symbol:hover,
 .bi:hover {
