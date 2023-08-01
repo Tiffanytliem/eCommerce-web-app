@@ -357,14 +357,8 @@ async function getOrCreateCart(userId) {
 
 const stripe = Stripe(process.env.STRIPE_KEY);
 
-// const router = express.Router();
-
 app.post('/api/create-checkout-session', async (req, res) => {
   try {
-    // req.body.cartItems.map((item) => {
-    //   console.log(item.itemId);
-    //   return item.itemId;
-    // });
     const lineItems = req.body.cartItems.map((item) => {
       return {
         price_data: {
