@@ -70,53 +70,56 @@ function Cart({ onClose }) {
       <p className="cart-title">Cart</p>
       <br />
       <hr />
+      <div className="cart-body">
+        {items.map((item) => (
+          <div className="cart-row" key={item.itemId}>
+            <div className="cart-column-image">
+              <img
+                className="cart-image"
+                src={item.image}
+                alt={item.name}></img>
+            </div>
+            <div className="cart-column-name">
+              <div className="row">
+                <p>{item.name}</p>
+              </div>
+              <div className="row">
+                <p>${item.price.toFixed(2)}</p>
+                <br />
+                <br />
+              </div>
+              <div className="row-quantity">
+                <p
+                  className="column-third symbol"
+                  onClick={() => {
+                    handleReduceQuantity(item);
+                  }}>
+                  -
+                </p>
+                <p className="column-third">{item.quantity}</p>
+                <p
+                  className="column-third symbol"
+                  onClick={() => {
+                    handleAddQuantity(item);
+                  }}>
+                  +
+                </p>
+              </div>
+            </div>
+            <div className="cart-column-fourth">
+              <p>${item.totalPrice.toFixed(2)}</p>
+            </div>
+          </div>
+        ))}
+        <br />
+        <hr />
+        <p className="subtotal">Subtotal: ${totalCartPrice2.toFixed(2)}</p>
 
-      {items.map((item) => (
-        <div className="cart-row" key={item.itemId}>
-          <div className="cart-column-image">
-            <img className="cart-image" src={item.image} alt={item.name}></img>
-          </div>
-          <div className="cart-column-name">
-            <div className="row">
-              <p>{item.name}</p>
-            </div>
-            <div className="row">
-              <p>${item.price.toFixed(2)}</p>
-              <br />
-              <br />
-            </div>
-            <div className="row-quantity">
-              <p
-                className="column-third symbol"
-                onClick={() => {
-                  handleReduceQuantity(item);
-                }}>
-                -
-              </p>
-              <p className="column-third">{item.quantity}</p>
-              <p
-                className="column-third symbol"
-                onClick={() => {
-                  handleAddQuantity(item);
-                }}>
-                +
-              </p>
-            </div>
-          </div>
-          <div className="cart-column-fourth">
-            <p>${item.totalPrice.toFixed(2)}</p>
-          </div>
-          ` `
-        </div>
-      ))}
-      <br />
-      <hr />
-      <p className="subtotal">Subtotal: ${totalCartPrice2.toFixed(2)}</p>
-
-      <PayButton cartItems={items} className="check-out">
-        Check out
-      </PayButton>
-      <br />
+        <PayButton cartItems={items} className="payButton">
+          Check out
+        </PayButton>
+        <br />
+      </div>
     </div>
   );
 }

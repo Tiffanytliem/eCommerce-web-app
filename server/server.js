@@ -156,11 +156,6 @@ app.post('/api/:userId/:cartId', async (req, res, next) => {
   }
 });
 
-// app.post('/api/stripe/create-checkout-session/:userId', async (req, res, next) => {
-//   const { userId, cartItems } = req.body;
-
-// }
-
 app.post('/api/cart-items', async (req, res, next) => {
   const { productId, images, name, price } = req.body.product;
   const { userId } = req.body.user;
@@ -366,30 +361,31 @@ const stripe = Stripe(process.env.STRIPE_KEY);
 
 app.post('/api/create-checkout-session', async (req, res) => {
   try {
-    // const {
-    //   product,
-    //   price
-    // } = req.body;
-    const session = await stripe.checkout.sessions.create({
-      line_items: [
-        {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: 'T-shirt',
-            },
-            unit_amount: 2000,
+    // req.body.cartItems.map((item) => {
+    //   console.log(item.itemId);
+    //   return item.itemId;
+    // });
+    const lineItems = req.body.cartItems.map((item) => {
+      return {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: item.name,
           },
-          quantity: 1,
+          unit_amount: item.price * 100,
         },
-      ],
+        quantity: item.quantity,
+      };
+    });
+
+    const session = await stripe.checkout.sessions.create({
+      line_items: lineItems,
       mode: 'payment',
       success_url: `${process.env.CLIENT_URL}/checkout-success`,
       cancel_url: `${process.env.CLIENT_URL}/cart`,
     });
 
     res.json({ url: session.url });
-    // console.log(session);
   } catch (err) {
     console.log(err);
   }
