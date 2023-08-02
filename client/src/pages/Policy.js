@@ -1,13 +1,13 @@
 import '../styles.css';
 import Footer from '../components/Footer';
-export default function About() {
+export default function Policy() {
   return (
     <>
-      <div className="about-page container">
+      <div className="policy-page container">
         <br />
         <br />
         <br />
-        <h1>About</h1>
+        <h1>Privacy Policy</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
           pellentesque urna vel orci fermentum accumsan. Cras pretium felis quis

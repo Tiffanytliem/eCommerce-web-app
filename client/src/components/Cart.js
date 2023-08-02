@@ -65,11 +65,14 @@ function Cart({ onClose }) {
 
   return (
     <div className="cart-modal">
-      <span className="bi bi-x" onClick={onClose}></span>
-      <br />
-      <p className="cart-title">Cart</p>
-      <br />
-      <hr />
+      {(document.body.style.overflow = 'hidden')}
+      <div className="cart-header">
+        <span className="bi bi-x" onClick={onClose}></span>
+        <br />
+        <p className="cart-title">Cart</p>
+        <br />
+        <hr />
+      </div>
       <div className="cart-body">
         {items.map((item) => (
           <div className="cart-row" key={item.itemId}>
