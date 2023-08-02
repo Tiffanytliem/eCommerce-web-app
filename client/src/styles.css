@@ -30,6 +30,40 @@ body {
   border-bottom: solid 1px;
 }
 
+.cart-header {
+  position: fixed;
+  top: 0;
+  background-color: #fbf9f7;
+}
+
+.cart-modal {
+  z-index: 30;
+  position: absolute;
+  width: 340px;
+  right: 0;
+  top: 90px;
+  height: auto;
+  background-color: #fbf9f7;
+  overflow-y: scroll;
+}
+
+.cart-title {
+  text-align: center;
+  font-size: 22px;
+}
+
+.cart-column-image {
+  flex-basis: 31%;
+}
+
+.cart-column-name {
+  flex-basis: 34%;
+}
+
+.cart-image {
+  width: 100%;
+}
+
 .bi {
   color: black;
   padding: 0;
@@ -221,38 +255,17 @@ button:hover,
   font-size: 25px;
   width: 244px;
   line-height: 35px;
-  margin-bottom: 48vh;
+  margin-bottom: 40vh;
+}
+
+.about-page,
+.terms-page,
+.policy-page {
+  height: 80vh;
 }
 
 .errorMsg {
   color: red;
-}
-
-.cart-modal {
-  z-index: 30;
-  position: absolute;
-  width: 340px;
-  right: 0;
-  top: 0;
-  height: auto;
-  background-color: #fbf9f7;
-}
-
-.cart-title {
-  text-align: center;
-  font-size: 22px;
-}
-
-.cart-column-image {
-  flex-basis: 31%;
-}
-
-.cart-column-name {
-  flex-basis: 34%;
-}
-
-.cart-image {
-  width: 100%;
 }
 
 .cart-row {

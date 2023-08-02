@@ -11,6 +11,10 @@ export default function Header(props) {
     console.log('Cart Clicked');
     setShowCart(true);
   }
+  function handleOnClose() {
+    setShowCart(false);
+    document.body.style.overflow = 'unset';
+  }
 
   return (
     <div>
@@ -45,7 +49,7 @@ export default function Header(props) {
       </div>
       <div className="cart-container">
         {showCart ? (
-          <Cart onClose={() => setShowCart(false)} />
+          <Cart onClose={() => handleOnClose()} />
         ) : (
           console.log('Close cart')
         )}

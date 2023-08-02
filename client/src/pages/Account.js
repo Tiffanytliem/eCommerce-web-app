@@ -9,7 +9,7 @@ export default function Account() {
   // const navigate = useNavigate();
 
   return (
-    <div>
+    <>
       <div className="Account">
         {user && (
           <div>
@@ -40,6 +40,6 @@ export default function Account() {
       <div className="row hr-footer no-scroll">
         <Footer />
       </div>
-    </div>
+    </>
   );
 }

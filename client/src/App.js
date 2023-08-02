@@ -8,6 +8,9 @@ import AppContext from './components/AppContext.js';
 import Auth from './pages/AuthPage.js';
 import Account from './pages/Account.js';
 import Cart from './components/Cart.js';
+import About from './pages/About.js';
+import Terms from './pages/Terms.js';
+import Policy from './pages/Policy.js';
 import CheckoutSuccess from './components/CheckoutSuccess';
 
 const tokenKey = 'react-context-jwt';
@@ -53,6 +56,9 @@ function App() {
           <Route path="sign-up" element={<Auth action="sign-up" />} />
           <Route path="account" element={<Account />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="about" element={<About />} />
+          <Route path="terms" element={<Terms />} />
+          <Route path="policy" element={<Policy />} />
           <Route path="checkout-success" element={<CheckoutSuccess />} />
         </Route>
       </Routes>
