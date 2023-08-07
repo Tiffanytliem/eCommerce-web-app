@@ -59,7 +59,7 @@ export default function AuthForm({ action, onSignIn }) {
           <div className="errorMsg">
             {action === 'sign-up'
               ? 'This email is already registered'
-              : console.log(error, 'Incorrect email or password')}
+              : 'Incorrect email or password'}
           </div>
         )}
         <small>
