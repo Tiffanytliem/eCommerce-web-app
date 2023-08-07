@@ -9,6 +9,8 @@ export async function fetchProduct(productId) {
   return await res.json();
 }
 export async function signIn(email, password) {
+  console.log('email', email);
+  console.log('pw', password);
   return await signUpOrIn('sign-in', email, password);
 }
 export async function signUp(email, password) {

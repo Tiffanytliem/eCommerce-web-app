@@ -3,17 +3,23 @@ import { Link, Outlet } from 'react-router-dom';
 import { React, useContext, useState } from 'react';
 import AppContext from '../components/AppContext';
 import Cart from '../components/Cart';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header(props) {
+  const navigate = useNavigate();
   const { user } = useContext(AppContext);
   let [showCart, setShowCart] = useState(false);
   function handleCartClicked() {
-    console.log('Cart Clicked');
-    setShowCart(true);
+    if (user) {
+      console.log('Cart Clicked');
+      setShowCart(true);
+    } else {
+      navigate('/account');
+    }
   }
   function handleOnClose() {
     setShowCart(false);
-    document.body.style.overflow = 'unset';
+    // document.body.style.overflow = 'unset';
   }
 
   return (

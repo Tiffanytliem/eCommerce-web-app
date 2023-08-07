@@ -16,6 +16,7 @@ export default function AuthForm({ action, onSignIn }) {
       if (action === 'sign-up') {
         navigate('/sign-in');
       } else if (result.user && result.token) {
+        console.log(result.user, result.token);
         onSignIn(result);
       }
     } catch (err) {
@@ -58,7 +59,7 @@ export default function AuthForm({ action, onSignIn }) {
           <div className="errorMsg">
             {action === 'sign-up'
               ? 'This email is already registered'
-              : 'Incorrect email or password'}
+              : console.log(error, 'Incorrect email or password')}
           </div>
         )}
         <small>
