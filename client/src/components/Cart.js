@@ -65,7 +65,7 @@ function Cart({ onClose }) {
 
   return (
     <div className="cart-modal">
-      {(document.body.style.overflow = 'hidden')}
+      {/* {(document.body.style.overflow = 'hidden')} */}
       <div className="cart-header">
         <span className="bi bi-x" onClick={onClose}></span>
         <br />

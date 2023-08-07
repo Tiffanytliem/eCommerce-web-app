@@ -108,6 +108,8 @@ app.post('/api/auth/sign-up', async (req, res, next) => {
 app.post('/api/auth/sign-in', async (req, res, next) => {
   try {
     const { email, password } = req.body;
+    console.log('email', email);
+    console.log('password', password);
     if (!email || !password) {
       throw new ClientError(401, 'invalid login');
     }
@@ -121,12 +123,16 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
     const result = await db.query(sql, params);
     const [user] = result.rows;
     if (!user) {
-      throw new ClientError(401, 'invalid login');
+      throw new ClientError(401, 'invalid username');
     }
     const { userId, hashedPassword } = user;
     const isMatching = await argon2.verify(hashedPassword, password);
     console.log(hashedPassword);
-    console.log(await argon2.hash('password'));
+    console.log(userId);
+    if (isMatching) {
+      console.log('passwords matched');
+    }
+
     if (!isMatching) {
       throw new ClientError(401, 'wrong password');
     }
