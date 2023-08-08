@@ -131,6 +131,7 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
     console.log(userId);
     if (isMatching) {
       console.log('passwords matched');
+      console.log('token', process.env.TOKEN_SECRET);
     }
 
     if (!isMatching) {
@@ -138,7 +139,7 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
     }
     const payload = { userId, email };
     const token = jwt.sign(payload, process.env.TOKEN_SECRET);
-    console.log('token', process.env.TOKEN_SECRET);
+
     res.json({ token, user: payload });
   } catch (err) {
     next(err);
