@@ -10,7 +10,7 @@ export default function Account() {
 
   return (
     <>
-      <div className="Account">
+      <div className="Account container">
         {user && (
           <div>
             <p> Hello! {user.email}</p>

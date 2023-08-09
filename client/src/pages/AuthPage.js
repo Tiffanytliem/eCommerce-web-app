@@ -17,7 +17,7 @@ export default function AuthPage({ action }) {
   const welcomeMessage = action === 'sign-in' ? 'Log in' : 'Create account';
   return (
     <div>
-      <div className="AuthPage">
+      <div className="AuthPage container">
         <header>
           <p className="welcomeMessage">{welcomeMessage}</p>
         </header>

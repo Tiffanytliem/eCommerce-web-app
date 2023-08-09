@@ -2,7 +2,7 @@ import '../styles.css';
 import Footer from '../components/Footer';
 export default function Policy() {
   return (
-    <>
+    <div>
       <div className="policy-page container">
         <br />
         <br />
@@ -29,9 +29,9 @@ export default function Policy() {
           venenatis dolor. Cras dapibus maximus sem.
         </p>
       </div>
-      <div className="row hr-footer no-scroll">
+      <div className="row hr-footer">
         <Footer />
       </div>
-    </>
+    </div>
   );
 }

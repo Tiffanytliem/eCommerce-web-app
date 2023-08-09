@@ -187,6 +187,7 @@ a:link {
   background-color: #f7ecde;
   border: none;
   margin: 20px 0;
+  color: black;
 }
 
 .subtotal {
@@ -198,7 +199,7 @@ a:link {
   display: block;
   width: 330px;
   margin: auto;
-  margin-bottom: 18vh;
+  min-height: 48vh;
 }
 
 .welcomeMessage {
@@ -255,13 +256,13 @@ button:hover,
   font-size: 25px;
   width: 244px;
   line-height: 35px;
-  margin-bottom: 40vh;
+  min-height: 27vh;
 }
 
 .about-page,
 .terms-page,
 .policy-page {
-  height: 80vh;
+  min-height: 75vh;
 }
 
 .errorMsg {
