@@ -1,4 +1,4 @@
-# final-project
+# eCommerce Web Application
 
 A full stack JavaScript solo project.
 
