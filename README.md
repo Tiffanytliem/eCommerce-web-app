@@ -40,11 +40,12 @@ Try the application live at https://ecommerce-web-application.azurewebsites.net/
 
 ### Getting Started
 
-1. Register an account
-2. Log-in and start shopping!
+1. Create an account
+2. Log in and start shopping!
 
 
 https://github.com/Tiffanytliem/final-project/assets/108093252/9be587b0-8adf-449c-8af5-627d501246f5
+![Screen_Recording_2023-08-11_at_12_15_15_PM_AdobeExpress](https://github.com/Tiffanytliem/eCommerce-web-app/assets/108093252/ef5ed980-2376-4fdd-bcaa-5633291d590e)
 
 
    
