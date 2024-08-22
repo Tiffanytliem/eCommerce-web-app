@@ -17,7 +17,8 @@
     "install:server": "npm install --prefix server",
     "install:env": "test -f server/.env || cp server/.env.example server/.env",
     "postinstall": "run-s install:*",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "deploy": "git push --force origin main:pub"
   },
   "devDependencies": {
     "eslint": "^8.38.0",
