@@ -17,7 +17,7 @@ As an eCommerce enthusiast, I wanted to build an application that delivers a cle
 
 ## Live Demo
 
-Try the application live at https://ecommerce-web-application.azurewebsites.net/
+Try the application live at http://ec2-3-19-233-239.us-east-2.compute.amazonaws.com/
 
 ## Features
 
