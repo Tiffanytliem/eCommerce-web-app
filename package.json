@@ -38,9 +38,6 @@
     "stylelint-config-standard": "^32.0.0"
   },
   "dependencies": {
-    "dot": "^1.1.3",
-    "dotenv": "^16.4.5",
-    "env": "^0.0.2",
     "jsonwebtoken": "^9.0.0"
   }
 }
